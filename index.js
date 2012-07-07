@@ -13,7 +13,7 @@ module.exports = function (configFile, argv) {
     delete argv.$0;
     delete argv._;
     
-    if (!path.existsSync(configFile)) {
+    if (!fs.existsSync(configFile)) {
         return argv;
     }
     else {
