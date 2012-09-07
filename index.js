@@ -3,6 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var merge = require('deepmerge');
 
+var existsSync = fs.existsSync || path.existsSync;
+
 module.exports = function (configFile, argv) {
     if (Array.isArray(argv)) {
         argv = optimist.parse(argv);
@@ -13,7 +15,7 @@ module.exports = function (configFile, argv) {
     delete argv.$0;
     delete argv._;
     
-    if (!path.existsSync(configFile)) {
+    if (!existsSync(configFile)) {
         return argv;
     }
     else {
